@@ -2,20 +2,18 @@ package org.example.sortingAlghoritms;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class BubbleSortTest {
-    BubbleSort bs = new BubbleSort();
-    InsertionSort is = new InsertionSort();
+class MergeSortTest {
 
+    SelectionSort ss = new SelectionSort();
+    MergeSort ms = new MergeSort();
 
     @Test
-    void bubbleSort() {
+    void mergeSort() {
         int[] arr = {198, 56, 98, 34, 0, -34, 11, -23};
         int[] arr1 = {198, 56, 98, 34, 0, -34, 11, -23};
-        assertArrayEquals(bs.bubbleSort(arr), is.insertionSort(arr1));
-    }
+        assertArrayEquals(ms.mergeSort(arr), ss.selectionSort(arr1));
 
+    }
 }

@@ -6,7 +6,7 @@ public class MergeSort {
      * This method sorted our array with merge sort`s algorithm.
      * @param array
      */
-    public void mergeSort(int[] array) {
+    public int[] mergeSort(int[] array) {
         System.out.print("\n\nUnsorted array` [ ");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + "  ");
@@ -18,6 +18,7 @@ public class MergeSort {
             System.out.print(array[i] + "  ");
         }
         System.out.println("]");
+        return array;
     }
 
     /**
