@@ -8,7 +8,7 @@ public class NPowN {
     int n =sc.nextInt();
     public static void main(String[] args) {
     NPowN nPowN = new NPowN();
-    nPowN.nPowNTimesRepeat(nPowN.n);
+        System.out.println(nPowN.nPowNTimesRepeat(nPowN.n));
 
     }
 
@@ -31,6 +31,7 @@ public class NPowN {
                 nPowNTimesRepeat(n);
             }
         }
+        System.out.println();
         return count;
     }
 }
