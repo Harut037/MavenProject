@@ -1,18 +1,8 @@
-package org.example.arrayList;
+package org.example.array_list;
 
 import java.util.*;
 
-public class MyArrayList<E> implements List<E> {
-
-//    public static void main(String[] args) {
-//        MyArrayList ma = new MyArrayList();
-//        ma.add("a");
-//        ma.add("b");
-//        ma.add("c");
-//        ma.remove("a");
-//
-//
-//    }
+public class MyArrayList<E> extends AbstractList<E> implements List<E> , RandomAccess, Cloneable {
 
     private int initialCapacity = 10;
     private int size;
@@ -28,6 +18,20 @@ public class MyArrayList<E> implements List<E> {
         System.arraycopy(array,0,arr,0,initialCapacity);
         array = arr;
         initialCapacity = newCapacity;
+    }
+
+
+    /**
+     * Method print all array`s elements.
+     * @return
+     */
+    public boolean iterateAllElements() {
+
+        for(int i = 0; i< size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("\n");
+        return true;
     }
 
     /**
@@ -144,6 +148,40 @@ public class MyArrayList<E> implements List<E> {
         return array;
     }
 
+    public E[] set(int index, Object o){
+        if (index >= size){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        else {
+            for (int i = 0; i < size; i++) {
+                if (i == index) {
+                    array[index] = (E) o;
+                }
+                return array;
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Method pops the first found element with the element we gave.
+     * @param o
+     * @param element
+     * @return
+     */
+    public E[] replace(Object o, Object element){
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(o)){
+                array[i] = (E) element;
+                return array;
+            }
+        }
+        System.out.print("\nList does not contains that element");
+        return array;
+    }
+
+
+
     /**
      * Method searching by using index.
      * @param index
@@ -170,20 +208,7 @@ public class MyArrayList<E> implements List<E> {
         }
         System.out.println("\nThe list not contains this element.");
     }
-    @Override
-    public Iterator<E> iterator() {
-        return null;
-    }
 
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
 
     /**
      * Method adds an element to the array.
@@ -221,34 +246,10 @@ public class MyArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
     public void clear() {
+        initialCapacity = 10;
+        array = (E[]) new Object[initialCapacity];
         size = 0;
-
     }
 
     @Override
@@ -259,14 +260,13 @@ public class MyArrayList<E> implements List<E> {
         return (E) array[index];
     }
 
-    @Override
-    public E set(int index, E element) {
-        return null;
-    }
+
 
     @Override
     public void add(int index, E element) {
+        for (int i = size - 1; i >= index ; i--) {
 
+        }
     }
 
     @Override
@@ -281,28 +281,11 @@ public class MyArrayList<E> implements List<E> {
         return null;
     }
 
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
 
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
 
-    @Override
-    public ListIterator<E> listIterator() {
-        return null;
-    }
 
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
 
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
-    }
+
+
+
 }
