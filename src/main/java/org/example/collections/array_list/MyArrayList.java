@@ -1,8 +1,8 @@
-package org.example.list.array_list;
+package org.example.collections.array_list;
 
 import java.util.*;
 
-public class MyArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable {
+public class MyArrayList<E> extends AbstractList<E> implements List<E> {
 
     private int initialCapacity = 10;
     private int size;
@@ -97,14 +97,16 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E>, RandomAc
      * Method updating with index.
      *
      * @param index
-     * @param o
+     * @param e
      * @return
      */
-    public E[] update(int index, Object o) {
-        if (index >= size) {
+    public E[] update(int index, E e) {
+
+        if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        array[index] = (E) o;
+
+        array[index] = e;
         return array;
     }
 
@@ -133,12 +135,12 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E>, RandomAc
      * @return
      */
     public E[] swap(int index_1, int index_2) {
-        if (index_1 >= size || index_2 >= size) {
+        if ((index_1 >= size || index_1 < 0) || (index_2 < 0 || index_2 >= size)) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        Object tmp = array[index_1];
+        E tmp = array[index_1];
         array[index_1] = array[index_2];
-        array[index_2] = (E) tmp;
+        array[index_2] = tmp;
         return array;
     }
 
@@ -268,6 +270,7 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E>, RandomAc
 
     /**
      * Method getting element of index.
+     *
      * @param index index of the element to return
      * @return
      */
@@ -288,7 +291,6 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E>, RandomAc
     }
 
     /**
-     *
      * @param index the index of the element to be removed
      * @return
      */

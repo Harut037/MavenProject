@@ -1,4 +1,4 @@
-package org.example.list.linked_list;
+package org.example.collections.linked_list;
 
 public class Node<E> {
     public E data;

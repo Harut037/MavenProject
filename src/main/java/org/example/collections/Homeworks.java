@@ -1,9 +1,9 @@
-package org.example.list;
+package org.example.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
+import java.util.*;
 
 public class Homeworks {
 
@@ -24,37 +24,39 @@ public class Homeworks {
 //        homeworks.print();
 
 
+
 //        18. Write a program that reads a sequence of integers  (ArrayList<int>) ending with an
 //             empty line and sorts  them in an increasing order.
 
 //        homeworks.sort();
 
 
+
 //        19. Write a program that removes from given sequence  all negative numbers.
 
-
-        ArrayList<Integer> tmp = new ArrayList<>();
-        tmp.add(-5);
-        tmp.add(10);
-        tmp.add(-34);
-        tmp.add(-9);
-        tmp.add(-11);
-        tmp.add(101);
+//        ArrayList<Integer> tmp = new ArrayList<>(List.of(-5, 10, -34, -9, -11, 101));
 //        homeworks.removeNegativeNumbers(tmp);
 
-        tmp.clear();
-        tmp.add(4);
-        tmp.add(2);
-        tmp.add(2);
-        tmp.add(5);
-        tmp.add(2);
-        tmp.add(3);
-        tmp.add(2);
-        tmp.add(3);
-        tmp.add(1);
-        tmp.add(5);
-        tmp.add(2);
-        homeworks.found(tmp);
+
+
+//        20. Write a program that removes from given sequence  all numbers that occur odd
+//            number of times.  Example: {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2} -> {5, 3, 3, 5}
+
+//        homeworks.sequence();
+
+
+
+//      21. Write a generic class Stack<T> that can be used to represent stacks of objects of
+//          type T. The class should include methods push(), pop(), and isEmpty(). Inside the
+//          class, use an ArrayList to hold the items on the stack.
+
+//        Stack stack = new Stack<>();
+//        stack.push(1);
+//        stack.push(2);
+//        stack.push(3);
+//        System.out.println(stack.pop());
+//        System.out.println(stack.pop());
+
     }
 
     /**
@@ -113,10 +115,11 @@ public class Homeworks {
 
     /**
      * Method removing negative elements from the list.
+     *
      * @param list
      * @return
      */
-    public ArrayList<Integer> removeNegativeNumbers(ArrayList<Integer> list){
+    public ArrayList<Integer> removeNegativeNumbers(ArrayList<Integer> list) {
         int counter = 0;
         System.out.print("\nList`s elements` [ ");
         for (int i = 0; i < list.size(); i++) {
@@ -125,7 +128,7 @@ public class Homeworks {
         System.out.println("]");
 
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) < 0){
+            if (list.get(i) < 0) {
                 list.remove(i);
                 i--;
                 continue;
@@ -141,32 +144,26 @@ public class Homeworks {
     }
 
 
-    public void found(List tmp){
-        int checkSize = tmp.size();
-        int counter = 1;
-        for (int i = 0; i < tmp.size(); i++) {
-            for (int j = i + 1; j < tmp.size() ; j++) {
-                if (tmp.get(i) == tmp.get(j)){
-                    counter++;
-                }
-            }
-            for (int j = i + 1; j < tmp.size(); j++) {
-                if (counter % 2 == 1){
-                    if (tmp.get(i) == tmp.get(j)){
-                        counter++;
-                    }
-                }
-            }
+    public void found(int[] sequence) {
 
+        Map<Integer, Integer> map = new HashMap<>();
 
+        for (int i = 0; i < sequence.length; i++) {
+            map.put(i, sequence[i]);
         }
 
-        System.out.print("\nList`s  elements` [ ");
-        for (int i = 0; i < tmp.size(); i++) {
-            System.out.print(tmp.get(i) + " ");
-        }
-        System.out.println("]");
+    }
 
+
+    public void sequence() {
+        ArrayList<Integer> sequence = new ArrayList<>(List.of(4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2));
+        ArrayList<Integer> finalSequence = new ArrayList<>();
+        for (int i = 0; i < sequence.size(); i++) {
+            if (Collections.frequency(sequence, sequence.get(i)) % 2 == 0) {
+                finalSequence.add(sequence.get(i));
+            }
+        }
+        System.out.println(finalSequence);
     }
 }
 

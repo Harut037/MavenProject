@@ -1,6 +1,6 @@
-package org.example.list.linked_list;
+package org.example.collections.linked_list;
 
-import org.example.list.array_list.MyArrayList;
+import org.example.collections.array_list.MyArrayList;
 
 import java.util.AbstractList;
 import java.util.List;
@@ -11,12 +11,12 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
     E data;
     private Node head;
     private Node tail;
+    private int counter = 0;
 
     public MyLinkedList() {
         head = null;
         tail = null;
     }
-
 
     /**
      * Method gets element by index.
@@ -25,19 +25,21 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
      */
     @Override
     public E get(int index) {
-
         Node temp = head;
-        int counter = 0;
-        while (temp != null){
-            if (counter == index){
-                return (E) temp.data;
+         counter = 0;
+        if (index < size() && index >= 0) {
+            while (temp != null) {
+                if (counter == index) {
+                    return (E) temp.data;
+                }
+                counter++;
+                temp = temp.next;
             }
-            counter++;
-            temp = temp.next;
         }
-        throw  new ArrayIndexOutOfBoundsException();
+        else
+        throw new IndexOutOfBoundsException();
+        return (E)temp.data;
     }
-
     /**
      * Method check is list empty or not.
      * @return
@@ -86,8 +88,7 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
 
     public void setter( int index, E data) {
         Node cur = head;
-        int counter = 0;
-
+        counter = 0;
 
         while (cur != null && counter != index) {
             cur = cur.next;
@@ -105,28 +106,34 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
     /**
      * Methode removing the first element in list.
      */
-    public void removeFirst(){
-        Node temp = head;
-
-        if (head.next == null){
-            tail = null;
+    public void removeFirst() {
+        if (size() == 0) {
+            throw new NullPointerException();
         } else {
-            head.next.prev = null;
-        }
-        head = head.next;
-    }
+            if (head.next == null) {
+                tail = null;
+            } else {
+                head.next.prev = null;
+            }
+            head = head.next;
 
+        }
+    }
     /**
      * Methode removing the last element in list.
      */
     public void removeLast(){
-        if (head.next == null){
-            head = null;
-        }else{
-            tail.prev.next = null;
+        if (size() == 0) {
+            throw new NullPointerException();
+        } else {
+            if (head.next == null) {
+                head = null;
+            } else {
+                tail.prev.next = null;
+            }
+            tail = tail.prev;
+            counter--;
         }
-        tail = tail.prev;
-
     }
 
     /**
@@ -175,8 +182,7 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
      */
     public void replace(int index,E element){
         Node temp = head;
-        int counter = 0;
-
+         counter = 0;
         while (temp != null){
             if (index == counter){
                 temp.data = element;
@@ -185,7 +191,7 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
             temp = temp.next;
             counter++;
         }
-        throw new ArrayIndexOutOfBoundsException();
+        throw new IndexOutOfBoundsException();
     }
 
 
@@ -195,8 +201,7 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
      */
     public int size(){
         Node temp = head;
-        int counter = 0;
-
+        counter = 0;
         while (temp != null){
             counter++;
             temp = temp.next;
@@ -214,27 +219,21 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
 
 
     public void cloneLinkedList(MyLinkedList list) {
+        list.clear();
         Node temp = head;
-        Node newTemp;
         while(temp != null) {
-            newTemp = temp;
-            list.addLast(newTemp.data);
+            list.addLast(temp.data);
             temp = temp.next;
         }
     }
 
     public void cloneLinkedList(MyArrayList list) {
+        list.clear();
         Node temp = head;
-        Node newTemp = temp;
-        for(int i = 0; i<list.size();i++) {
-            newTemp.next = (Node) list.get(i);
-        }
         while(temp != null) {
-            newTemp = temp;
-            list.add(newTemp.data);
+            list.add(temp.data);
             temp = temp.next;
         }
-        list.reverse();
     }
 
 }
