@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Test implements Comparator {
 
+
     private int age;
 
     public int getAge() {
@@ -25,12 +26,12 @@ public class Test implements Comparator {
 
 
 
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Test test = new Test();
         Test tests = new Test(15);
         ForTest forTest = new ForTest(10);
+
 
 
 
@@ -61,7 +62,7 @@ public class Test implements Comparator {
 
 //  6. Create a priority queue of custom objects and add elements to it.
 
-        System.out.println(test.compare(tests.age, forTest.getAge()));
+//       System.out.println(test.compare(tests.age, forTest.getAge()));
 
 
 //  7. Remove elements from a queue until it is empty.
@@ -108,6 +109,10 @@ public class Test implements Comparator {
 //        test.removeFirstElement();
 
 
+//  15.Write a Java program to change priorityQueue to maximum priorityQueue.
+
+//    test.reverseOrder();
+
     }
 
 
@@ -148,6 +153,7 @@ public class Test implements Comparator {
         queue.add(3);
         queue.add(4);
 
+        Iterator<Integer> integerIterator = queue.iterator();
 
         while (!queue.isEmpty()) {
             queue.poll();
@@ -166,6 +172,10 @@ public class Test implements Comparator {
         queue.add("Gurgen");
         queue.add("Babken");
         queue.add("Harut");
+
+        while (!queue.isEmpty()){
+            System.out.println(queue.poll());
+        }
 
     }
 
@@ -304,9 +314,27 @@ public class Test implements Comparator {
      */
     @Override
     public int compare(Object o1, Object o2) {
-        Test test = new Test(15);
+        Test tests = new Test(15);
         ForTest forTest = new ForTest(10);
-        return Integer.compare(test.age, forTest.getAge());
+        return Integer.compare(tests.age, forTest.getAge());
+    }
+
+
+    /**
+     * Method reverses our list`s order.
+     */
+    public void reverseOrder(){
+
+        PriorityQueue<Integer> queue = new PriorityQueue<>(10,Collections.reverseOrder());
+        queue.add(8);
+        queue.add(54);
+        queue.add(39);
+        queue.add(80);
+        queue.add(22);
+
+        while (!queue.isEmpty()){
+            System.out.println(queue.poll());
+        }
     }
 }
 
