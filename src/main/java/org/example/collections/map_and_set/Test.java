@@ -99,6 +99,7 @@ public class Test {
 //       [(1, 6), (8, 10), (15, 18)].
 
 
+//        mas.mergedIntervals();
 
 //    B. Write a program that takes in a list of strings and returns the k most frequent
 //       strings in the list using a TreeMap. For example, if the input list is ["apple",
@@ -106,6 +107,7 @@ public class Test {
 //       program should return ["apple", "banana"].
 
 
+//        mas.mostFrequent();
     }
 
 

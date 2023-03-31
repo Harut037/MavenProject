@@ -207,17 +207,18 @@ public class MapAndSet {
 
     /**
      * Method finds anagram paints int the array
+     *
      * @return count of them.
      */
     public int anagramPairs() {
 
         HashMap<Integer, String> hashMap = new HashMap<>();
-        hashMap.put(0,"dog");
-        hashMap.put(1,"act");
-        hashMap.put(2,"mice");
-        hashMap.put(3,"god");
-        hashMap.put(4,"cat");
-        hashMap.put(5,"odg");
+        hashMap.put(0, "dog");
+        hashMap.put(1, "act");
+        hashMap.put(2, "mice");
+        hashMap.put(3, "god");
+        hashMap.put(4, "cat");
+        hashMap.put(5, "odg");
 
         int tmp1 = 0;
         int tmp2 = 0;
@@ -230,7 +231,7 @@ public class MapAndSet {
                 for (int k = 0; k < hashMap.get(j).length(); k++) {
                     tmp2 += hashMap.get(j).charAt(k);
                 }
-                if (tmp1 == tmp2){
+                if (tmp1 == tmp2) {
                     counter++;
                 }
                 tmp2 = 0;
@@ -241,24 +242,129 @@ public class MapAndSet {
     }
 
 
-    public void mostFrequent(int k){
+    /**
+     * Method find the most frequent string.
+     */
+    public void mostFrequent() {
         TreeMap<Integer, String> treeMap = new TreeMap<>();
-        treeMap.put(1,"banana");
-        treeMap.put(2,"apple");
-        treeMap.put(3,"apple");
-        treeMap.put(4,"cherry");
-        treeMap.put(5,"banana");
-        treeMap.put(6,"apple");
-        treeMap.put(7,"peach");
+        treeMap.put(0, "peach");
+        treeMap.put(1, "apple");
+        treeMap.put(2, "banana");
+        treeMap.put(3, "apple");
+        treeMap.put(4, "cherry");
+        treeMap.put(5, "banana");
+        treeMap.put(6, "apple");
+        treeMap.put(7, "peach");
+        treeMap.put(8, "banana");
+        treeMap.put(9, "banana");
+        treeMap.put(10, "peach");
+        treeMap.put(11, "peach");
+        treeMap.put(12, "peach");
 
-        int counter = 0;
 
-        for (int i = 0; i < treeMap.size() ; i++) {
-            for (int j = i; i < treeMap.size(); i++) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int counter;
+
+        for (int i = 0; i < treeMap.size(); i++) {
+            counter = 0;
+            for (int j = i; j < treeMap.size(); j++) {
+                if (treeMap.get(i).equals(treeMap.get(j))) {
+                    counter++;
+                }
+            }
+            map.put(i, counter);
+        }
+        int index = 0;
+        int tmp = 0;
+        for (int i = 0; i < map.size(); i++) {
+            if (map.get(i) > tmp) {
+                tmp = map.get(i);
+                index = i;
+            }
+        }
+        System.out.println("\nThe most frequent strings` " + treeMap.getOrDefault(index, "a"));
+    }
+
+
+    /**
+     * Method merged intervals.
+     */
+    public void mergedIntervals() {
+        TreeMap<Integer, Integer[]> treeMap = new TreeMap<>();
+        Integer[] array = new Integer[]{1, 3};
+        Integer[] array1 = new Integer[]{2, 6};
+        Integer[] array2 = new Integer[]{15, 18};
+        Integer[] array3 = new Integer[]{11, 13};
+        Integer[] array4 = new Integer[]{5, 9};
+        Integer[] array5 = new Integer[]{9, 10};
+
+        ArrayList<Integer[]> arrayList = new ArrayList<>(List.of(array, array1, array2, array3, array4, array5));
+
+        Integer tmp1;
+        Integer tmp2;
+
+        Integer forArray;
+        Integer forArray1;
+        Integer forArray2;
+        Integer forArray3;
+        Integer[] zero = new Integer[]{0, 0};
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i)[0] > arrayList.get(i)[1]){
+                throw new ArithmeticException();
+            }
+            for (int j = i; j < arrayList.size(); j++) {
+                forArray = arrayList.get(i)[1];
+                forArray1 = arrayList.get(j)[0];
+                if (((forArray >= forArray1) && arrayList.get(i)[1] <= arrayList.get(j)[1])) {
+                    tmp1 = arrayList.get(i)[0];
+                    tmp2 = arrayList.get(j)[1];
+                    Integer[] integer = new Integer[]{tmp1, tmp2};
+                    arrayList.set(j, zero);
+                    arrayList.set(i, integer);
+                }
+                if ((arrayList.get(i)[0] > arrayList.get(j)[0] && (arrayList.get(i)[1] > arrayList.get(j)[1]) && arrayList.get(j)[1] > arrayList.get(i)[0])) {
+                    tmp1 = arrayList.get(j)[0];
+                    tmp2 = arrayList.get(i)[1];
+                    Integer[] integer = new Integer[]{tmp1, tmp2};
+                    arrayList.set(j, zero);
+                    arrayList.set(i, integer);
+                }
 
             }
         }
 
+        for (int i = 0; i < arrayList.size(); i++) {
+            for (int j = i; j < arrayList.size(); j++) {
+                forArray = arrayList.get(i)[1];
+                forArray1 = arrayList.get(j)[0];
+                if ((forArray.equals(forArray1 - 1)) || (forArray.equals(forArray1))) {
+                    tmp1 = arrayList.get(i)[0];
+                    tmp2 = arrayList.get(j)[1];
+                    Integer[] integer = new Integer[]{tmp1, tmp2};
+                    arrayList.set(j, zero);
+                    arrayList.set(i, integer);
+                }
+            }
+        }
 
+        ArrayList<Integer[]> uniqueList = new ArrayList<>();
+        int index = 0;
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (!(arrayList.get(i)[0] == 0 && arrayList.get(i)[1] == 0)) {
+                    uniqueList.add(index,arrayList.get(i));
+                    index++;
+                }
+            }
+
+
+        for (int i = 0; i < uniqueList.size(); i++) {
+            treeMap.put(i, uniqueList.get(i));
+        }
+
+        for (int i = 0; i < treeMap.size(); i++) {
+            System.out.println( "[" + treeMap.get(i)[0] + "  " + treeMap.get(i)[1] + "]");
+        }
     }
 }
+
+
