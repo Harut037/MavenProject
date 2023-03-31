@@ -6,7 +6,7 @@ import java.util.AbstractList;
 import java.util.List;
 import java.util.RandomAccess;
 
-public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable  {
+public class MyLinkedList<E> extends AbstractList<E> implements List<E> {
 
     E data;
     private Node head;
