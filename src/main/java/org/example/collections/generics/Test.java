@@ -8,6 +8,7 @@ public class Test {
 
     public static void main(String[] args) {
         Generics generics = new Generics();
+        Palindromes palindromes = new Palindromes();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -49,8 +50,15 @@ public class Test {
 //       be of different types.
 
 //        Pair<String,Integer> pair = new Pair<>("Harut",20);
+//        String[] strings = new String[]{"aba, bab, aca, akk"};
 
 
+//    7. Write a generic method to count the number of elements in a collection that have a
+//       specific property (e.g., odd integers, prime numbers, palindromes).
 
+
+        System.out.println("\nPalindromes element in the list --> " + generics.palindrome());
+        System.out.println("\nPrime numbers in the list --> " + generics.checkPrimesNumber(new ArrayList<>(List.of(17, 29, 101, 15, 22))));
+        System.out.println("\nOdd numbers int the list --> " + generics.checkNumber(new ArrayList<>(List.of(17, 29, 101, 15, 22, 34, 11,95))));
     }
 }

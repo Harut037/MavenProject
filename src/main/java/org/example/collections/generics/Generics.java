@@ -4,7 +4,7 @@ package org.example.collections.generics;
 import java.util.List;
 import java.util.Scanner;
 
-public class Generics<T>{
+public class Generics<T> extends Palindromes{
 
 
 

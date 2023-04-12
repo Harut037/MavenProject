@@ -23,7 +23,7 @@ public class StringUtil_2 {
 
 //    3. A palindrome is a word which reads the same backward or forward. 'abcba' is
 //    a palindrome. Write a method that detects if a string is a palindrome.
-//        System.out.println("\nIs it palindrome world: " + su.isPalindrome(sc.nextLine()));
+        System.out.println("\nIs it palindrome world: " + su.isPalindrome(sc.nextLine()));
 
 
 //    4. Given a list of strings, write a method that returns a list of all strings that

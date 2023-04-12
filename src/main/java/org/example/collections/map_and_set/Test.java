@@ -24,7 +24,7 @@ public class Test {
 //    C. Write a program that takes a HashSet of strings and returns a new HashSet
 //       containing only the unique words in the original set, ignoring case.
 
-//        mas.ignoreCase();
+        mas.ignoreCase();
 
 
 //   2. LinkedHashSet:
@@ -98,19 +98,19 @@ public class Test {
 //       input list is [(1, 3), (2, 6), (8, 10), (15, 18)], then the program should return
 //       [(1, 6), (8, 10), (15, 18)].
 
-
 //        mas.mergedIntervals();
+
 
 //    B. Write a program that takes in a list of strings and returns the k most frequent
 //       strings in the list using a TreeMap. For example, if the input list is ["apple",
 //       "banana", "apple", "cherry", "banana", "apple", "date"] and k is 2, then the
 //       program should return ["apple", "banana"].
 
-
 //        mas.mostFrequent();
+
+
+
     }
-
-
 
 }
 
